@@ -1,5 +1,8 @@
 package com.bpiejak.readit;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -53,6 +56,13 @@ public class MainActivity extends AppCompatActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        FragmentManager fragmentManager = getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        if (position == 1) {
+                            FrontPage frontPage = new FrontPage();
+                            fragmentTransaction.add(R.id.content, frontPage);
+                            fragmentTransaction.commit();
+                        }
                         Log.i("Main", "position: " + position);
                         return true;
                     }
