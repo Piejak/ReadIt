@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,18 +23,16 @@ public class FrontPage extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.all, container, false);
-//        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.front_page_recycler);
-//        mLayoutManager = new LinearLayoutManager(getActivity());
-//        mAdapter = new CustomAdapter(mDataset);
-//        mRecyclerView.setAdapter(mAdapter);
+        initDataset();
+        View rootView = inflater.inflate(R.layout.front_page, container, false);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.front_page_recycler);
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mAdapter = new CustomAdapter(mDataset);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+        Log.i("FrontPage", "onCreateView is being run");
 
         return rootView;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        initDataset();
     }
 
     private void initDataset() {
