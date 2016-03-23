@@ -22,11 +22,11 @@ public class FrontPage extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.front_page, container, false);
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.front_page_recycler);
-        mLayoutManager = new LinearLayoutManager(getActivity());
-        mAdapter = new CustomAdapter(mDataset);
-        mRecyclerView.setAdapter(mAdapter);
+        View rootView = inflater.inflate(R.layout.all, container, false);
+//        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.front_page_recycler);
+//        mLayoutManager = new LinearLayoutManager(getActivity());
+//        mAdapter = new CustomAdapter(mDataset);
+//        mRecyclerView.setAdapter(mAdapter);
 
         return rootView;
     }
