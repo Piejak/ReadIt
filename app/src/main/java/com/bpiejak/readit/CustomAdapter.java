@@ -7,9 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-/**
- * Created by Brian on 3/23/2016.
- */
+import java.util.Locale;
+
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
     private Post[] mDataset;
 
@@ -36,20 +35,18 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     @Override
     public CustomAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_view, parent, false);
-        ViewHolder vh = new ViewHolder(v);
-        return vh;
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.post_view,
+                parent, false));
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Log.i(mDataset[position].getLink(), mDataset[position].getLink());
-        int numDownVotes = mDataset[position].getDownvotes();
-        int numUpVotes = mDataset[position].getUpvotes();
         holder.mOpView.setText(mDataset[position].getOp());
         holder.mLinkView.setText(mDataset[position].getLink());
-        holder.mDownvotesView.setText(mDataset[position].getDownvotes() + "");
-        holder.mUpvotesView.setText(mDataset[position].getUpvotes() + "");
+        holder.mDownvotesView.setText(String.format(Locale.ENGLISH, "%d",
+                mDataset[position].getDownvotes()));
+        holder.mUpvotesView.setText(String.format(Locale.ENGLISH, "%d",
+                mDataset[position].getUpvotes()));
     }
 
     @Override

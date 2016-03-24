@@ -28,11 +28,6 @@ public class MainActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
 
-//        FragmentManager fragmentManager = getFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        FrontPage frontPage = new FrontPage();
-//        fragmentTransaction.add(R.id.content, frontPage);
-//        fragmentTransaction.commit();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content, new FrontPage());
         fragmentTransaction.commit();
@@ -67,15 +62,12 @@ public class MainActivity extends AppCompatActivity {
                         FragmentTransaction fragmentTransaction = getSupportFragmentManager()
                                 .beginTransaction();
                         if (position == 1) {
-                            Log.i("Main", "The front page block is being run");
                             fragmentTransaction.replace(R.id.content, new FrontPage());
                             fragmentTransaction.commit();
                         } else if (position == 2) {
-                            Log.i("Main", "The all block is running");
                             fragmentTransaction.replace(R.id.content, new All());
                             fragmentTransaction.commit();
                         }
-                        Log.i("Main", "position: " + position);
                         return true;
                     }
                 })
