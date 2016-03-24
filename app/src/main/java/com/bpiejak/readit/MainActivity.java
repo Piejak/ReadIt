@@ -1,10 +1,9 @@
 package com.bpiejak.readit;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +27,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
+
+//        FragmentManager fragmentManager = getFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        FrontPage frontPage = new FrontPage();
+//        fragmentTransaction.add(R.id.content, frontPage);
+//        fragmentTransaction.commit();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content, new FrontPage());
+        fragmentTransaction.commit();
 
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withName(R.string.item1);
         SecondaryDrawerItem item2 = new SecondaryDrawerItem().withName(R.string.item2);
@@ -56,11 +64,15 @@ public class MainActivity extends AppCompatActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        FragmentManager fragmentManager = getFragmentManager();
-                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        FragmentTransaction fragmentTransaction = getSupportFragmentManager()
+                                .beginTransaction();
                         if (position == 1) {
-                            FrontPage frontPage = new FrontPage();
-                            fragmentTransaction.add(R.id.content, frontPage);
+                            Log.i("Main", "The front page block is being run");
+                            fragmentTransaction.replace(R.id.content, new FrontPage());
+                            fragmentTransaction.commit();
+                        } else if (position == 2) {
+                            Log.i("Main", "The all block is running");
+                            fragmentTransaction.replace(R.id.content, new All());
                             fragmentTransaction.commit();
                         }
                         Log.i("Main", "position: " + position);
