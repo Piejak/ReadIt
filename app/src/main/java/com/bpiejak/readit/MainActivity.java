@@ -1,12 +1,18 @@
 package com.bpiejak.readit;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -20,10 +26,26 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar mToolbar;
+    private BroadcastReceiver mWebViewReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.i("main", context + " " + intent.getStringExtra("url"));
+            Bundle bundle = new Bundle();
+            bundle.putString("url", intent.getStringExtra("url"));
+            WebViewFragment webViewFragment = new WebViewFragment();
+            webViewFragment.setArguments(bundle);
+
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.replace(R.id.content, webViewFragment);
+            fragmentTransaction.commit();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_PROGRESS);
         setContentView(R.layout.activity_main);
         mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
@@ -73,5 +95,13 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .withAccountHeader(headerResult)
                 .build();
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(mWebViewReceiver, new IntentFilter("com.bpiejak.start_web_view"));
+    }
+
+    @Override
+    protected void onDestroy() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mWebViewReceiver);
+        super.onDestroy();
     }
 }

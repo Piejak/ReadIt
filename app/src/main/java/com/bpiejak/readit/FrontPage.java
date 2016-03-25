@@ -51,7 +51,7 @@ public class FrontPage extends Fragment {
     private void initDataset() {
         mDataset = new Post[DATASET_COUNT];
         for (int i = 0; i < DATASET_COUNT; i++) {
-            mDataset[i] = new Post(420, 69, "Someone", "imgur.com/bpiesa");
+            mDataset[i] = new Post(1234, 321, "Brian", "http://imgur.com/9Ju208q");
         }
     }
 }
