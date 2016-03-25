@@ -5,7 +5,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -19,8 +21,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         public TextView mDownvotesView;
 
 
-        public ViewHolder(View postView) {
+        public ViewHolder(final View postView) {
             super(postView);
+            postView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = getAdapterPosition();
+                    Toast.makeText(postView.getContext(), pos + "", Toast.LENGTH_SHORT).show();
+                }
+            });
             mOpView = (TextView) postView.findViewById(R.id.op);
             mLinkView = (TextView) postView.findViewById(R.id.link);
             mUpvotesView = (TextView) postView.findViewById(R.id.upvotes);
@@ -47,8 +56,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                 mDataset[position].getDownvotes()));
         holder.mUpvotesView.setText(String.format(Locale.ENGLISH, "%d",
                 mDataset[position].getUpvotes()));
-    }
 
+    }
     @Override
     public int getItemCount() {
         return mDataset.length;
