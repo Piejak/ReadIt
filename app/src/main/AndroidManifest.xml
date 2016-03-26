@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="com.bpiejak.readit"
           xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -18,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
+
     </application>
 
 </manifest>
