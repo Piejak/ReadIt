@@ -4,5 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     >
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:id="@+id/bottom_sheet"
+        android:background="@color/primary"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Test"
+            android:textColor="@color/colorPrimaryDark"
+            />
+    </LinearLayout>
+
+    <include
+        layout="@layout/post_view"
+        android:id="@+id/post_view"
+        />
 
 </com.daimajia.swipe.SwipeLayout>

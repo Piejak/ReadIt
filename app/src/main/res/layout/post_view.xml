@@ -1,72 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:padding="8dp">
 
-    <android.support.v7.widget.CardView
-        android:layout_width="fill_parent"
+    <TextView
+        android:id="@+id/op"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="4dp"
-        card_view:cardCornerRadius="4dp"
-        card_view:cardElevation="5dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="8dp">
-
-            <TextView
-                android:id="@+id/op"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/link"
-                android:text="notGBurdell"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/colorAccent"
-                />
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/link"
+        android:text="notGBurdell"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/colorAccent"
+        />
 
 
-            <TextView
-                android:id="@+id/link"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_toRightOf="@+id/downvotes"
-                android:padding="7dp"
-                android:text="Test post please ignore"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="italic" />
+    <TextView
+        android:id="@+id/link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toRightOf="@+id/downvotes"
+        android:padding="7dp"
+        android:text="Test post please ignore"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="italic" />
 
-            <TextView
-                android:id="@+id/upvotes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_marginRight="4dp"
-                android:paddingBottom="4dp"
-                android:text="420"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+    <TextView
+        android:id="@+id/upvotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="4dp"
+        android:paddingBottom="4dp"
+        android:text="420"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
-            <TextView
-                android:id="@+id/downvotes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_marginRight="4dp"
-                android:paddingBottom="4dp"
-                android:text="69"
-                android:layout_below="@id/upvotes"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-
-</LinearLayout>
+    <TextView
+        android:id="@+id/downvotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="4dp"
+        android:paddingBottom="4dp"
+        android:text="69"
+        android:layout_below="@id/upvotes"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+</RelativeLayout>
