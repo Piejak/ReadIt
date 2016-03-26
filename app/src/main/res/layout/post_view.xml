@@ -50,4 +50,6 @@
         android:text="69"
         android:layout_below="@id/upvotes"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
+
 </RelativeLayout>
