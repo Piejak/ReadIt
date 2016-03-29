@@ -18,7 +18,7 @@
             android:layout_weight="1"
             android:src="@drawable/ic_upvote"
             android:id="@+id/upvote_button"
-            android:background="@color/colorPrimaryDark"
+            android:background="?attr/selectableItemBackgroundBorderless"
             />
         <ImageButton
             android:layout_width="wrap_content"
@@ -26,8 +26,7 @@
             android:layout_weight="1"
             android:src="@drawable/ic_downvote"
             android:id="@+id/downvote_button"
-            android:background="@color/colorPrimaryDark"
-
+            android:background="?attr/selectableItemBackgroundBorderless"
             />
         <ImageButton
             android:layout_width="wrap_content"
@@ -35,7 +34,7 @@
             android:layout_weight="1"
             android:src="@drawable/ic_star"
             android:id="@+id/save_button"
-            android:background="@color/colorPrimaryDark"
+            android:background="?attr/selectableItemBackgroundBorderless"
 
             />
         <ImageButton
@@ -44,7 +43,7 @@
             android:layout_weight="1"
             android:src="@drawable/ic_comments"
             android:id="@+id/comments_button"
-            android:background="@color/colorPrimaryDark"
+            android:background="?attr/selectableItemBackgroundBorderless"
 
             />
     </LinearLayout>
