@@ -8,6 +8,9 @@ public class Post {
     private int downvotes;
     private String op;
     private String link;
+    private boolean isUpvoted = false;
+    private boolean isDownvoted = false;
+    private boolean isSaved = false;
 
     public Post(int upvotes, int downvotes, String op, String link) {
         this.upvotes = upvotes;
@@ -34,5 +37,29 @@ public class Post {
 
     public String getLink() {
         return link;
+    }
+
+    public boolean isUpvoted() {
+        return isUpvoted;
+    }
+
+    public boolean isDownvoted() {
+        return isDownvoted;
+    }
+
+    public boolean isSaved() {
+        return isSaved;
+    }
+
+    public void setUpvoted(boolean upvoted) {
+        isUpvoted = upvoted;
+    }
+
+    public void setDownvoted(boolean downvoted) {
+        isDownvoted = downvoted;
+    }
+
+    public void setSaved(boolean saved) {
+        isSaved = saved;
     }
 }

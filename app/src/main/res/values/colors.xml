@@ -8,4 +8,8 @@
     <color name="colorDivider">#b6b6b6</color>
     <color name="colorPrimaryLight">#cfd8dc</color>
     <color name="textIcons">#FFFFFF</color>
+    <color name="neutral">#c6c6c6</color>
+    <color name="downvote">#9494ff</color>
+    <color name="upvote">#ff8b60</color>
+    <color name="orangered">#ff4500</color>
 </resources>
