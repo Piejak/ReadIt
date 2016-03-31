@@ -1,8 +1,10 @@
 package com.bpiejak.readit;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -88,20 +90,54 @@ public class CustomAdapter extends RecyclerSwipeAdapter<CustomAdapter.ViewHolder
         });
         holder.mUpvoteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                mItemManger.closeItem(position);
-                Toast.makeText(holder.itemView.getContext(), "Upvote", Toast.LENGTH_SHORT).show();
+                if (!mDataset[position].isUpvoted()) {
+                    mDataset[position].setUpvoted(true);
+                    if (mDataset[position].isDownvoted()) {
+                        mDataset[position].setDownvoted(false);
+                        holder.mDownvoteButton.setColorFilter(ContextCompat.getColor(holder.itemView.getContext(),R.color.downvote));
+                        holder.mDownvoteButton.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(),R.color.colorPrimaryDark));
+                    }
+                    holder.mUpvoteButton.setColorFilter(ContextCompat.getColor(holder.itemView.getContext(),R.color.textIcons));
+                    holder.mUpvoteButton.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(),R.color.upvote));
+                } else {
+                    mDataset[position].setUpvoted(false);
+                    holder.mUpvoteButton.setColorFilter(ContextCompat.getColor(holder.itemView.getContext(),R.color.upvote));
+                    holder.mUpvoteButton.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(),R.color.colorPrimaryDark));
+                }
+                //mItemManger.closeItem(position);
             }
         });
         holder.mDownvoteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                mItemManger.closeItem(position);
-                Toast.makeText(holder.itemView.getContext(), "Downvote", Toast.LENGTH_SHORT).show();
+                if (!mDataset[position].isDownvoted()) {
+                    mDataset[position].setDownvoted(true);
+                    if (mDataset[position].isUpvoted()) {
+                        mDataset[position].setUpvoted(false);
+                        holder.mUpvoteButton.setColorFilter(ContextCompat.getColor(holder.itemView.getContext(),R.color.upvote));
+                        holder.mUpvoteButton.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(),R.color.colorPrimaryDark));
+                    }
+                    holder.mDownvoteButton.setColorFilter(ContextCompat.getColor(holder.itemView.getContext(),R.color.textIcons));
+                    holder.mDownvoteButton.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(),R.color.downvote));
+                } else {
+                    mDataset[position].setUpvoted(false);
+                    holder.mDownvoteButton.setColorFilter(ContextCompat.getColor(holder.itemView.getContext(),R.color.downvote));
+                    holder.mDownvoteButton.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(),R.color.colorPrimaryDark));
+                }
+                //mItemManger.closeItem(position);
             }
         });
         holder.mSaveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                mItemManger.closeItem(position);
-                Toast.makeText(holder.itemView.getContext(), "Save", Toast.LENGTH_SHORT).show();
+                if (!mDataset[position].isSaved()) {
+                    mDataset[position].setSaved(true);
+                    holder.mSaveButton.setColorFilter(ContextCompat.getColor(holder.itemView.getContext(),R.color.textIcons));
+                    holder.mSaveButton.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(),R.color.orangered));
+                } else {
+                    mDataset[position].setSaved(false);
+                    holder.mSaveButton.setColorFilter(ContextCompat.getColor(holder.itemView.getContext(),R.color.orangered));
+                    holder.mSaveButton.setBackgroundColor(ContextCompat.getColor(holder.itemView.getContext(),R.color.colorPrimaryDark));
+                }
+                //mItemManger.closeItem(position);
             }
         });
         holder.mCommentsButton.setOnClickListener(new View.OnClickListener() {
